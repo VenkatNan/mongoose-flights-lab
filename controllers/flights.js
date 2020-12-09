@@ -7,8 +7,8 @@ module.exports = {
     create,
     index,
     show,
-    // delete: deleteFlight,
-    // addDestinations
+    // delete: deleteFlight, nope
+    addDestinations
 }
 
 function index(req, res) {
@@ -41,18 +41,18 @@ function create(req, res) {
         res.redirect(`/flights`)
     })
 }
-
+//not working
 // function deleteFlight(req, res) {
 //     Flight.findByIdAndDelete(req.params.id, (err, flight) => {
 //         res.redirect('/flights')
 //     })
 // }
 
-// function addDestinations(req, res) {
-//     Flight.findById(req.params.id, (err, flight) => {
-//         flight.destination.push(req.body.destination)
-//         flight.save((err) => {
-//             res.redirect(`/flights/${flight._id}`)
-//         }) 
-//     })
-// }
+function addDestinations(req, res) {
+    Flight.findById(req.params.id, (err, flight) => {
+        flight.destination.push(req.body.destination)
+        flight.save((err) => {
+            res.redirect(`/flights/${flight._id}`)
+        }) 
+    })
+}
