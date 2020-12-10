@@ -6,7 +6,6 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const flightsRouter = require('./routes/flights');
-const ticketsRouter = require('./routes/tickets');
 const destinationsRouter = require('./routes/destinations');
 
 const app = express();
@@ -24,7 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use(methodOverride('_method'))
 app.use('/', indexRouter);
-app.use('/', ticketsRouter);
 app.use('/flights', flightsRouter);
 app.use('/', destinationsRouter);
 
